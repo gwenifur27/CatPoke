@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poke the Cat!</title>
+  <style>
+    body {
+      /* Tiles the background image automatically across the screen */
+      background-image: url('bg.png');
+      background-repeat: repeat;
+      
+      /* Centers the main image vertically and horizontally */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    clickable-image {
+      /* Fits the image inside the window with breathing room for margins */
+      max-height: 80vh; 
+      max-width: 80vw;
+      
+      /* Ensures the image scales down proportionally without stretching */
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.1s ease;
+    }
+
+    /* Gives a subtle press effect when clicked */
+    .clickable-image:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="click-sound" src="meow.wav"></audio>
+
+  <img 
+    src="Avarice_sm.png" 
+    alt="Poke that cat!" 
+    class="pokeable_Cat"
+    onclick="playSound()"
+  >
+
+  <script>
+    function playSound() {
+      const sound = document.getElementById('click-sound');
+      sound.currentTime = 0; // Rewinds to the start if clicked repeatedly
+      sound.play();
+    }
+  </script>
+
+</body>
+</html>
